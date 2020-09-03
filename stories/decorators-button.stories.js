@@ -1,12 +1,12 @@
 import { html } from "lit-html";
 
-import "./test-button";
+import "./decorators-button";
 
 const kind = ["primary", "secondary"];
 
 export default {
-  title: "Button",
-  component: "test-button",
+  title: "Decorators Button",
+  component: "decorators-button",
   argTypes: {
     kind: { control: { type: 'select', options: kind }},
   }
@@ -20,13 +20,13 @@ const onButtonClick = (props) => {
 
 const Template = ({kind, name, content, disabled, onClick}) => {
   return html`
-    <test-button 
+    <decorators-button 
       .kind="${kind}"
       .name="${name}"
       ?disabled=${disabled}
       @onClick="${onClick}">
       ${content}
-    </test-button>`
+    </decorators-button>`
 };
 
 export const Text = Template.bind({});

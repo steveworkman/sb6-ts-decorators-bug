@@ -1,7 +1,7 @@
 import { LitElement, html, customElement, property, css } from "lit-element";
 
-@customElement("test-button")
-export class TestButton extends LitElement {
+@customElement("non-decorators-button")
+export class NonDecoratorsButton extends LitElement {
   static get styles() {
     return [
       css`
@@ -47,20 +47,24 @@ export class TestButton extends LitElement {
     ];
   }
 
-  @property({ type: String })
-  kind = "primary";
+  static get properties() {
+    return { 
+      kind: {type: String},
+      name: {type: String},
+      type: {type: String},
+      disabled: {type: Boolean},
+      onButtonMouseOver: {type: Function},
+    };
+  }
 
-  @property({ type: String })
-  name = "button";
-
-  @property({ type: String })
-  type = "button";
-
-  @property({ type: Boolean })
-  disabled = false;
-
-  @property({ type: Function })
-  onButtonMouseOver = () => {};
+  constructor() {
+    super();
+    this.kind = "primary";
+    this.name = "button";
+    this.type = "button";
+    this.disabled = false;
+    this.onButtonMouseOver = () => {};
+  }
 
   handleClick(e) {
     this.dispatchEvent(
